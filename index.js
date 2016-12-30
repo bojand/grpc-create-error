@@ -61,6 +61,10 @@ function createGRPCError (message, code, metadata) {
  * @return {Error} See <code>createGRPCError</code> description
  */
 function applyCreate (err, message, code, metadata) {
+  if (err instanceof Error === false) {
+    throw new Error('Source error must be an instance of Error')
+  }
+
   if (message instanceof Error) {
     err.message = message.message.toString()
     if (typeof message.code === 'number') {
