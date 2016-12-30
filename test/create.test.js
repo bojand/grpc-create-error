@@ -40,6 +40,16 @@ test('create an error from message and code as integer and metadata object', t =
   t.deepEqual(err.metadata.getMap(), { foo: 'bar' })
 })
 
+test('create an error from message and code as undefined and metadata object', t => {
+  const err = create('Boom', undefined, { foo: 'bar' })
+  t.truthy(err)
+  t.true(err instanceof Error)
+  t.is(err.message, 'Boom')
+  t.true(typeof err.code === 'undefined')
+  t.true(err.metadata instanceof grpc.Metadata)
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar' })
+})
+
 test('create an error from message and code as integer and metadata as Metadata', t => {
   const md = new grpc.Metadata()
   md.add('foo', 'bar')
