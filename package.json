@@ -1,6 +1,6 @@
 {
   "name": "grpc-create-error",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Utility function that creates an Error suitable for gRPC responses",
   "main": "index.js",
   "scripts": {
