@@ -1,9 +1,9 @@
-# create-grpc-error
+# grpc-create-error
 
 Utility function that creates an Error suitable for gRPC responses
 
-[![npm version](https://img.shields.io/npm/v/create-grpc-error.svg?style=flat-square)](https://www.npmjs.com/package/create-grpc-error)
-[![build status](https://img.shields.io/travis/bojand/create-grpc-error/master.svg?style=flat-square)](https://travis-ci.org/bojand/create-grpc-error)
+[![npm version](https://img.shields.io/npm/v/grpc-create-error.svg?style=flat-square)](https://www.npmjs.com/package/grpc-create-error)
+[![build status](https://img.shields.io/travis/bojand/grpc-create-error/master.svg?style=flat-square)](https://travis-ci.org/bojand/grpc-create-error)
 
 ### Related
 
