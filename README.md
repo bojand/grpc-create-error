@@ -31,7 +31,7 @@ See tests for all examples
 **Example** *(Using standard grpc status code)*  
 
 ```js
-const grpc = require('grpc)
+const grpc = require('grpc')
 const createGRPCError = require('create-grpc-error')
 const err = createGRPCError('Ouch!', grpc.status.INVALID_ARGUMENT)
 ```

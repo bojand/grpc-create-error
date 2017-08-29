@@ -25,7 +25,7 @@ module.exports = createGRPCError
  *                           module to create metadata for the return value.
  * @return {Error} The new Error
  * @example <caption>Using standard grpc status code</caption>
- * const grpc = require('grpc)
+ * const grpc = require('grpc')
  * const createGRPCError = require('create-grpc-error')
  * const err = createGRPCError('Ouch!', grpc.status.INVALID_ARGUMENT)
  *
