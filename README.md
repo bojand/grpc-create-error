@@ -9,6 +9,8 @@ Utility function that creates an Error suitable for gRPC responses
 
 [grpc-error](https://github.com/bojand/grpc-error) - `GRPCError` class that uses this module
 
+[grpc status codes](https://grpc.io/grpc/node/grpc.html) - The grpc status codes.
+
 ## API
 
 <a name="createGRPCError"></a>
@@ -22,15 +24,22 @@ See tests for all examples
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | <code>String</code> &#124; <code>Number</code> &#124; <code>Error</code> &#124; <code>Object</code> | If <code>String</code> the error message                                              If <code>Number</code> the error code                                              If instanceof <code>Error</code>, the error to source data from. We still create a new                                              <code>Error</code> instance, copy data from the passed error and assign / merge the rest                                              of arguments. This can be used to mege metadata of existing error with                                              additional metadata.                                              If <code>Object</code>, assumed to be metadata, either plain object representation                                              or actual <code>grpc.Metadata</code> instance. We use                                              <code>grpc-create-metadata</code> module to create metadata for the                                              return value. |
-| code | <code>Number</code> &#124; <code>Object</code> | If <code>Number</code> the error code                              If <code>Object</code>, assumed to be metadata, either plain object representation                              or actual <code>grpc.Metadata</code> instance. We use                              <code>grpc-create-metadata</code> module to create metadata for the                              return value. |
+| message | <code>String</code> \| <code>Number</code> \| <code>Error</code> \| <code>Object</code> | If <code>String</code> the error message                                              If <code>Number</code> the error code                                              If instanceof <code>Error</code>, the error to source data from. We still create a new                                              <code>Error</code> instance, copy data from the passed error and assign / merge the rest                                              of arguments. This can be used to mege metadata of existing error with                                              additional metadata.                                              If <code>Object</code>, assumed to be metadata, either plain object representation                                              or actual <code>grpc.Metadata</code> instance. We use                                              <code>grpc-create-metadata</code> module to create metadata for the                                              return value. |
+| code | <code>Number</code> \| <code>Object</code> | If <code>Number</code> the error code                              If <code>Object</code>, assumed to be metadata, either plain object representation                              or actual <code>grpc.Metadata</code> instance. We use                              <code>grpc-create-metadata</code> module to create metadata for the                              return value. |
 | metadata | <code>Object</code> | The error metadata. Either plain object representation or actual                           <code>grpc.Metadata</code> instance. We use <code>grpc-create-metadata</code>                           module to create metadata for the return value. |
 
-**Example**  
+**Example** *(Using standard grpc status code)*  
+
+```js
+const grpc = require('grpc)
+const createGRPCError = require('create-grpc-error')
+const err = createGRPCError('Ouch!', grpc.status.INVALID_ARGUMENT)
+```
+
+**Example** *(Custom error with metadata)*  
 
 ```js
 const createGRPCError = require('create-grpc-error')
-
 const err = createGRPCError('Boom', 2000, { ERROR_CODE: 'INVALID_TOKEN' })
 console.log(err.message) // 'Boom'
 console.log(err.code) // 2000
@@ -66,8 +75,8 @@ Same as createGRPCError but applies cretion to the existing error.
 | Param | Type | Description |
 | --- | --- | --- |
 | err | <code>Error</code> | The error to apply creation to |
-| message | <code>String</code> &#124; <code>Number</code> &#124; <code>Error</code> &#124; <code>Object</code> | See <code>createGRPCError</code> description |
-| code | <code>Number</code> &#124; <code>Object</code> | See <code>createGRPCError</code> description |
+| message | <code>String</code> \| <code>Number</code> \| <code>Error</code> \| <code>Object</code> | See <code>createGRPCError</code> description |
+| code | <code>Number</code> \| <code>Object</code> | See <code>createGRPCError</code> description |
 | metadata | <code>Object</code> | See <code>createGRPCError</code> description |
 
 ## License

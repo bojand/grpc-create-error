@@ -1,5 +1,5 @@
 {
-  "name": "create-grpc-error",
+  "name": "grpc-create-error",
   "version": "0.1.0",
   "description": "Utility function that creates an Error suitable for gRPC responses",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bojand/create-grpc-error.git"
+    "url": "git+https://github.com/bojand/grpc-create-error.git"
   },
   "author": {
     "name": "Bojan D.",
@@ -17,9 +17,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/bojand/create-grpc-error/issues"
+    "url": "https://github.com/bojand/grpc-create-error/issues"
   },
-  "homepage": "https://github.com/bojand/create-grpc-error",
+  "homepage": "https://github.com/bojand/grpc-create-error",
   "keywords": [
     "protocol buffer",
     "protobuf",
@@ -31,13 +31,13 @@
   },
   "devDependencies": {
     "async": "^2.1.4",
-    "ava": "^0.17.0",
+    "ava": "^0.22.0",
     "babel-eslint": "^7.1.1",
     "grpc": "^1.0.1",
-    "jsdoc-to-markdown": "^2.0.1",
+    "jsdoc-to-markdown": "^3.0.0",
     "lodash": "^4.17.2",
     "md-wrap-code": "^0.1.1",
-    "standard": "^8.5.0"
+    "standard": "^10.0.0"
   },
   "directories": {
     "test": "test"

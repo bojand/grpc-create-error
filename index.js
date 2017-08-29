@@ -24,9 +24,13 @@ module.exports = createGRPCError
  *                           <code>grpc.Metadata</code> instance. We use <code>grpc-create-metadata</code>
  *                           module to create metadata for the return value.
  * @return {Error} The new Error
- * @example
+ * @example <caption>Using standard grpc status code</caption>
+ * const grpc = require('grpc)
  * const createGRPCError = require('create-grpc-error')
+ * const err = createGRPCError('Ouch!', grpc.status.INVALID_ARGUMENT)
  *
+ * @example <caption>Custom error with metadata</caption>
+ * const createGRPCError = require('create-grpc-error')
  * const err = createGRPCError('Boom', 2000, { ERROR_CODE: 'INVALID_TOKEN' })
  * console.log(err.message) // 'Boom'
  * console.log(err.code) // 2000
