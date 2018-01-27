@@ -1,5 +1,7 @@
 # grpc-create-error
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bojand/grpc-create-error.svg)](https://greenkeeper.io/)
+
 Utility function that creates an Error suitable for gRPC responses
 
 [![npm version](https://img.shields.io/npm/v/grpc-create-error.svg?style=flat-square)](https://www.npmjs.com/package/grpc-create-error)
