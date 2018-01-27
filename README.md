@@ -1,13 +1,12 @@
 # grpc-create-error
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/bojand/grpc-create-error.svg)](https://greenkeeper.io/)
-
 Utility function that creates an Error suitable for gRPC responses
 
 [![npm version](https://img.shields.io/npm/v/grpc-create-error.svg?style=flat-square)](https://www.npmjs.com/package/grpc-create-error)
 [![build status](https://img.shields.io/travis/bojand/grpc-create-error/master.svg?style=flat-square)](https://travis-ci.org/bojand/grpc-create-error)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com)
 [![License](https://img.shields.io/github/license/bojand/grpc-create-error.svg?style=flat-square)](https://raw.githubusercontent.com/bojand/grpc-create-error/master/LICENSE)
+[![Greenkeeper badge](https://badges.greenkeeper.io/bojand/grpc-create-error.svg)](https://greenkeeper.io/)
 
 ### Related
 
