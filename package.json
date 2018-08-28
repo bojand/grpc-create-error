@@ -32,7 +32,7 @@
   "devDependencies": {
     "async": "^2.1.4",
     "ava": "^0.25.0",
-    "babel-eslint": "^8.2.1",
+    "babel-eslint": "^9.0.0",
     "greenkeeper-lockfile": "^1.13.2",
     "grpc": "^1.11.3",
     "jsdoc-to-markdown": "^4.0.1",
