@@ -30,7 +30,7 @@
     "grpc-create-metadata": "^3.0.0"
   },
   "devDependencies": {
-    "async": "^2.1.4",
+    "async": "^3.0.1",
     "ava": "^0.25.0",
     "babel-eslint": "^8.2.1",
     "greenkeeper-lockfile": "^1.13.2",
