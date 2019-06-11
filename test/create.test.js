@@ -241,7 +241,7 @@ test('create an error from message as Error(message, code<int>, metadata<object>
   t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'error_code': 'INVALID_TOKEN' })
 })
 
-test('create an error from message as Error(message, code<int>, metadata<object>) and passed string code and metadata as object', t => {
+test('create an error from message as Error(message, code<int>, metadata<object>) and passed string code and metadata as Metadata', t => {
   const e = new Error('Boom')
   e.code = 1000
   e.metadata = new grpc.Metadata()
