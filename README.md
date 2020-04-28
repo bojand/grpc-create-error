@@ -34,14 +34,14 @@ See tests for all examples
 
 ```js
 const grpc = require('grpc')
-const createGRPCError = require('create-grpc-error')
+const createGRPCError = require('grpc-create-error')
 const err = createGRPCError('Ouch!', grpc.status.INVALID_ARGUMENT)
 ```
 
 **Example** *(Custom error with metadata)*  
 
 ```js
-const createGRPCError = require('create-grpc-error')
+const createGRPCError = require('grpc-create-error')
 const err = createGRPCError('Boom', 2000, { ERROR_CODE: 'INVALID_TOKEN' })
 console.log(err.message) // 'Boom'
 console.log(err.code) // 2000
@@ -52,7 +52,7 @@ console.log(err.metadata.getMap()) // { error_code: 'INVALID_TOKEN' }
 **Example** *(Source from error and merge metadatas)*  
 
 ```js
-const createGRPCError = require('create-grpc-error')
+const createGRPCError = require('grpc-create-error')
 
 const existingError = new Error('Boom')
 existingError.metadata = new grpc.Metadata()
