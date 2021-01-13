@@ -13,6 +13,11 @@ Utility function that creates an Error suitable for gRPC responses
 
 [grpc status codes](https://grpc.io/grpc/node/grpc.html) - The grpc status codes.
 
+## Installation
+```bash
+npm install create-grpc-error --save
+```
+
 ## API
 
 <a name="createGRPCError"></a>
