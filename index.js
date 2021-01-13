@@ -5,7 +5,7 @@ module.exports = createGRPCError
 /**
  * Utility function that creates an Error suitable for gRPC responses.
  * See tests for all examples
- * @param  {String|Number|Error|Object} message If <code>String</code> the error message
+ * @param  {String|Number|Error|Object} [message] If <code>String</code> the error message
  *                                              If <code>Number</code> the error code
  *                                              If instanceof <code>Error</code>, the error to source data from. We still create a new
  *                                              <code>Error</code> instance, copy data from the passed error and assign / merge the rest
@@ -15,12 +15,12 @@ module.exports = createGRPCError
  *                                              or actual <code>grpc.Metadata</code> instance. We use
  *                                              <code>grpc-create-metadata</code> module to create metadata for the
  *                                              return value.
- * @param  {Number|Object} code If <code>Number</code> the error code
+ * @param  {Number|Object} [code] If <code>Number</code> the error code
  *                              If <code>Object</code>, assumed to be metadata, either plain object representation
  *                              or actual <code>grpc.Metadata</code> instance. We use
  *                              <code>grpc-create-metadata</code> module to create metadata for the
  *                              return value.
- * @param  {Object} metadata The error metadata. Either plain object representation or actual
+ * @param  {Object} [metadata] The error metadata. Either plain object representation or actual
  *                           <code>grpc.Metadata</code> instance. We use <code>grpc-create-metadata</code>
  *                           module to create metadata for the return value.
  * @return {Error} The new Error
