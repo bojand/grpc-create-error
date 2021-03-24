@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "ava -v",
-    "docs": "jsdoc2md index.js --heading-depth 3 --template readme.hbs | md-wrap-code > README.md"
+    "docs": "jsdoc2md index.js --heading-depth 3 --template readme.hbs | md-wrap-code > README.md",
+    "lint.fix": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -27,16 +28,16 @@
     "client"
   ],
   "dependencies": {
-    "grpc-create-metadata": "^3.0.0"
+    "grpc-create-metadata": "^4.0.0"
   },
   "devDependencies": {
+    "@grpc/grpc-js": "^1.2.12",
     "async": "^3.2.0",
-    "ava": "^2.4.0",
-    "grpc": "^1.24.2",
-    "jsdoc-to-markdown": "^5.0.3",
+    "ava": "^3.15.0",
+    "jsdoc-to-markdown": "^7.0.0",
     "lodash": "^4.17.15",
     "md-wrap-code": "^0.1.1",
-    "standard": "^14.0.0"
+    "standard": "^16.0.3"
   },
   "directories": {
     "test": "test"
@@ -47,6 +48,6 @@
     ]
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=12.0.0"
   }
 }
