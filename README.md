@@ -13,16 +13,11 @@ Utility function that creates an Error suitable for gRPC responses
 
 [grpc status codes](https://grpc.io/grpc/node/grpc.html) - The grpc status codes.
 
-## Installation
-```bash
-npm install create-grpc-error --save
-```
-
 ## API
 
 <a name="createGRPCError"></a>
 
-### createGRPCError(message, code, metadata) ⇒ <code>Error</code>
+### createGRPCError([message], [code], [metadata]) ⇒ <code>Error</code>
 Utility function that creates an Error suitable for gRPC responses.
 See tests for all examples
 
@@ -31,20 +26,17 @@ See tests for all examples
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | <code>String</code> \| <code>Number</code> \| <code>Error</code> \| <code>Object</code> | If <code>String</code> the error message                                              If <code>Number</code> the error code                                              If instanceof <code>Error</code>, the error to source data from. We still create a new                                              <code>Error</code> instance, copy data from the passed error and assign / merge the rest                                              of arguments. This can be used to mege metadata of existing error with                                              additional metadata.                                              If <code>Object</code>, assumed to be metadata, either plain object representation                                              or actual <code>grpc.Metadata</code> instance. We use                                              <code>grpc-create-metadata</code> module to create metadata for the                                              return value. |
-| code | <code>Number</code> \| <code>Object</code> | If <code>Number</code> the error code                              If <code>Object</code>, assumed to be metadata, either plain object representation                              or actual <code>grpc.Metadata</code> instance. We use                              <code>grpc-create-metadata</code> module to create metadata for the                              return value. |
-| metadata | <code>Object</code> | The error metadata. Either plain object representation or actual                           <code>grpc.Metadata</code> instance. We use <code>grpc-create-metadata</code>                           module to create metadata for the return value. |
+| [message] | <code>String</code> \| <code>Number</code> \| <code>Error</code> \| <code>Object</code> | If <code>String</code> the error message                                              If <code>Number</code> the error code                                              If instanceof <code>Error</code>, the error to source data from. We still create a new                                              <code>Error</code> instance, copy data from the passed error and assign / merge the rest                                              of arguments. This can be used to mege metadata of existing error with                                              additional metadata.                                              If <code>Object</code>, assumed to be metadata, either plain object representation                                              or actual <code>grpc.Metadata</code> instance. We use                                              <code>grpc-create-metadata</code> module to create metadata for the                                              return value. |
+| [code] | <code>Number</code> \| <code>Object</code> | If <code>Number</code> the error code                              If <code>Object</code>, assumed to be metadata, either plain object representation                              or actual <code>grpc.Metadata</code> instance. We use                              <code>grpc-create-metadata</code> module to create metadata for the                              return value. |
+| [metadata] | <code>Object</code> | The error metadata. Either plain object representation or actual                           <code>grpc.Metadata</code> instance. We use <code>grpc-create-metadata</code>                           module to create metadata for the return value. |
 
 **Example** *(Using standard grpc status code)*  
-
 ```js
 const grpc = require('grpc')
 const createGRPCError = require('create-grpc-error')
 const err = createGRPCError('Ouch!', grpc.status.INVALID_ARGUMENT)
 ```
-
 **Example** *(Custom error with metadata)*  
-
 ```js
 const createGRPCError = require('create-grpc-error')
 const err = createGRPCError('Boom', 2000, { ERROR_CODE: 'INVALID_TOKEN' })
@@ -53,9 +45,7 @@ console.log(err.code) // 2000
 console.log(err.metadata instanceof grpc.Metadata) // true
 console.log(err.metadata.getMap()) // { error_code: 'INVALID_TOKEN' }
 ```
-
 **Example** *(Source from error and merge metadatas)*  
-
 ```js
 const createGRPCError = require('create-grpc-error')
 
@@ -69,7 +59,6 @@ console.log(err.code) // 2000
 console.log(err.metadata instanceof grpc.Metadata) // true
 console.log(err.metadata.getMap()) // { foo: 'bar', error_code: 'INVALID_TOKEN' }
 ```
-
 <a name="applyCreate"></a>
 
 ### applyCreate(err, message, code, metadata) ⇒ <code>Error</code>

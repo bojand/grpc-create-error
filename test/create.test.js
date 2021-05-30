@@ -1,7 +1,7 @@
-import test from 'ava'
-import grpc from 'grpc'
+const test = require('ava')
+const grpc = require('@grpc/grpc-js')
 
-import create from '../'
+const create = require('../')
 
 test('create an error just from message', t => {
   const err = create('Boom')
@@ -177,14 +177,14 @@ test('create an error from message as Error with a message and integer code and 
 test('create an error from message as Error(message, code<int>, metadata<objcet>) and passed metadata as object', t => {
   const e = new Error('Boom')
   e.code = 1000
-  e.metadata = { 'foo': 'bar' }
-  const err = create(e, { 'ERROR_CODE': 'INVALID_TOKEN' })
+  e.metadata = { foo: 'bar' }
+  const err = create(e, { ERROR_CODE: 'INVALID_TOKEN' })
   t.truthy(err)
   t.true(err instanceof Error)
   t.is(err.message, 'Boom')
   t.is(err.code, 1000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'error_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', error_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<Metadata>) and passed metadata as object', t => {
@@ -192,26 +192,26 @@ test('create an error from message as Error(message, code<int>, metadata<Metadat
   e.code = 1000
   e.metadata = new grpc.Metadata()
   e.metadata.add('foo', 'bar')
-  const err = create(e, { 'ERROR_CODE': 'INVALID_TOKEN' })
+  const err = create(e, { ERROR_CODE: 'INVALID_TOKEN' })
   t.truthy(err)
   t.true(err instanceof Error)
   t.is(err.message, 'Boom')
   t.is(err.code, 1000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'error_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', error_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<object>) and passed integer code and metadata as object', t => {
   const e = new Error('Boom')
   e.code = 1000
-  e.metadata = { 'foo': 'bar' }
+  e.metadata = { foo: 'bar' }
   const err = create(e, 2000, { ERROR_CODE: 'INVALID_TOKEN' })
   t.truthy(err)
   t.true(err instanceof Error)
   t.is(err.message, 'Boom')
   t.is(err.code, 2000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'error_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', error_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<Metadata>) and passed integer code and metadata as object', t => {
@@ -225,20 +225,20 @@ test('create an error from message as Error(message, code<int>, metadata<Metadat
   t.is(err.message, 'Boom')
   t.is(err.code, 2000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'error_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', error_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<object>) and passed string code and metadata as object', t => {
   const e = new Error('Boom')
   e.code = 1000
-  e.metadata = { 'foo': 'bar' }
-  const err = create(e, '2000', { 'ERROR_CODE': 'INVALID_TOKEN' })
+  e.metadata = { foo: 'bar' }
+  const err = create(e, '2000', { ERROR_CODE: 'INVALID_TOKEN' })
   t.truthy(err)
   t.true(err instanceof Error)
   t.is(err.message, 'Boom')
   t.is(err.code, 1000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'error_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', error_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<object>) and passed string code and metadata as Metadata', t => {
@@ -246,19 +246,19 @@ test('create an error from message as Error(message, code<int>, metadata<object>
   e.code = 1000
   e.metadata = new grpc.Metadata()
   e.metadata.add('foo', 'bar')
-  const err = create(e, '2000', { 'ERROR_CODE': 'INVALID_TOKEN' })
+  const err = create(e, '2000', { ERROR_CODE: 'INVALID_TOKEN' })
   t.truthy(err)
   t.true(err instanceof Error)
   t.is(err.message, 'Boom')
   t.is(err.code, 1000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'error_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', error_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<object>) and passed integer code and no pased metadata', t => {
   const e = new Error('Boom')
   e.code = 1000
-  e.metadata = { 'foo': 'bar' }
+  e.metadata = { foo: 'bar' }
   const err = create(e, 2000)
   t.truthy(err)
   t.true(err instanceof Error)
@@ -285,7 +285,7 @@ test('create an error from message as Error(message, code<int>, metadata<Metadat
 test('create an error from message as Error(message, code<int>, metadata<object>) and passed string code and no metadata', t => {
   const e = new Error('Boom')
   e.code = 1000
-  e.metadata = { 'foo': 'bar' }
+  e.metadata = { foo: 'bar' }
   const err = create(e, '2000')
   t.truthy(err)
   t.true(err instanceof Error)
@@ -312,14 +312,14 @@ test('create an error from message as Error(message, code<int>, metadata<Metadat
 test('create an error from message as Error(message, code<int>, metadata<object>) and passed string code and object metadata', t => {
   const e = new Error('Boom')
   e.code = 1000
-  e.metadata = { 'foo': 'bar' }
-  const err = create(e, '2000', { 'STATUS_CODE': 'INVALID_TOKEN' })
+  e.metadata = { foo: 'bar' }
+  const err = create(e, '2000', { STATUS_CODE: 'INVALID_TOKEN' })
   t.truthy(err)
   t.true(err instanceof Error)
   t.is(err.message, 'Boom')
   t.is(err.code, 1000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'status_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', status_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<Metadata>) and passed string code and Metadata metadata', t => {
@@ -335,20 +335,20 @@ test('create an error from message as Error(message, code<int>, metadata<Metadat
   t.is(err.message, 'Boom')
   t.is(err.code, 1000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'status_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', status_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<object>) and passed integer code and object metadata', t => {
   const e = new Error('Boom')
   e.code = 1000
-  e.metadata = { 'foo': 'bar' }
-  const err = create(e, 2000, { 'STATUS_CODE': 'INVALID_TOKEN' })
+  e.metadata = { foo: 'bar' }
+  const err = create(e, 2000, { STATUS_CODE: 'INVALID_TOKEN' })
   t.truthy(err)
   t.true(err instanceof Error)
   t.is(err.message, 'Boom')
   t.is(err.code, 2000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'status_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', status_code: 'INVALID_TOKEN' })
 })
 
 test('create an error from message as Error(message, code<int>, metadata<Metadata>) and passed ingeter code and Metadata metadata', t => {
@@ -364,5 +364,5 @@ test('create an error from message as Error(message, code<int>, metadata<Metadat
   t.is(err.message, 'Boom')
   t.is(err.code, 2000)
   t.true(err.metadata instanceof grpc.Metadata)
-  t.deepEqual(err.metadata.getMap(), { foo: 'bar', 'status_code': 'INVALID_TOKEN' })
+  t.deepEqual(err.metadata.getMap(), { foo: 'bar', status_code: 'INVALID_TOKEN' })
 })
